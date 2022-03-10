@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Axios from 'axios';
+import Tweets from './Tweets.js';
+class App extends Component {
+  constructor(props)
+  {
+    super(props)
+    this.state = {
+      topic: "nasa",
+      tweetResults: {
+        results: []
+      }
+    }
+  
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  Axios
+    .get("https://twitter-microservice.herokuapp.com/tweets/show/nasa")
+    .then((response) =>  {
+      console.log(response.data);
+      this.setState({tweetResults: response.data});
+    });
+  }
+
+  render() {
+
+    return (
+      <div className="App">
+        <div className="container">
+        <Tweets />
+
+        </div>
+      </div>
+    );
+  }
 }
-
 export default App;
