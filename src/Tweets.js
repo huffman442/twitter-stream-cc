@@ -7,9 +7,14 @@ class Tweets extends Component {
     render() {
       return (
             <div className="tweets">
-            {this.props.tweetResults.results.map((tweet) => { 
+            {Object.values(this.props.tweets).map((tweet) => { 
+                console.log(tweet.tweet_id);
+                
                 return (
-                    <Tweet tweetId={tweet.tweet_id} />
+                    <div class="jumbotron">
+                        <h3>tweet would have rendered here with id</h3>
+                    <p>{tweet.tweet_id}</p>
+                    </div>
                 )
             } )}
             </div>
