@@ -5,7 +5,6 @@ import Tweets from './Tweets.js';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Tweet } from 'react-twitter-widgets'
 
 class App extends Component {
   constructor(props)
@@ -16,29 +15,28 @@ class App extends Component {
       topic: "nasa",
       tweetResults: {}
     }
+  }
 
+  componentDidMount(){
     this.makeApiCall();
   }
 
   handleTopicChange(selectedTopic) {
-    console.log(selectedTopic);
     this.setState({topic: selectedTopic})
     this.makeApiCall();
   }
 
   makeApiCall() {
+    const getURI = `https://twitter-microservice.herokuapp.com/tweets/show/${this.state.topic}?limit=10`;
+    
     Axios
-    .get("https://twitter-microservice.herokuapp.com/tweets/show/" + this.state.topic + "?limit=10")
+    .get(getURI)
     .then((response) => {
       this.setState({tweetResults: response.data});
     })
   }
 
   render() {
-    var tweet;
-    if(this.state.tweetResults[0]){
-      console.log(this.state.tweetResults[0].tweet_id);
-    }
     return (
       <div className="App">
         <div className="container">

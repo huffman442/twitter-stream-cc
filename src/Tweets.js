@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Tweet } from 'react-twitter-widgets'
+import { TwitterTweetEmbed } from 'react-twitter-embed';
+
 
 class Tweets extends Component {
 
     render() {
       return (
             <div className="tweets">
-            {Object.values(this.props.tweets).map((tweet) => { 
-                console.log(tweet.tweet_id);
-                
+            {Object.values(this.props.tweets).map((tweet, index) => { 
                 return (
-                    <div class="jumbotron">
-                        <h3>tweet would have rendered here with id</h3>
-                    <p>{tweet.tweet_id}</p>
+                    <div className="jumbotron">
+                        <TwitterTweetEmbed key={index} tweetId={`${tweet.tweet_id}`} />
                     </div>
                 )
             } )}
