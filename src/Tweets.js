@@ -7,10 +7,10 @@ class Tweets extends Component {
 
     render() {
       return (
-            <div className="tweets">
+            <div className="tweet-holder">
             {Object.values(this.props.tweets).map((tweet, index) => { 
                 return (
-                    <div className="jumbotron">
+                    <div className="selfCenter spaceBetween">
                         <TwitterTweetEmbed key={index} tweetId={`${tweet.tweet_id}`} />
                     </div>
                 )

@@ -1,5 +1,18 @@
 .App {
   text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+#dropdown-basic-button {
+  margin-top: 2rem;
+}
+
+.tweet-holder{
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .App-logo {

@@ -15,10 +15,12 @@ class App extends Component {
       topic: "nasa",
       tweetResults: {}
     }
+
+    
+    this.makeApiCall();
   }
 
   componentDidMount(){
-    this.makeApiCall();
   }
 
   handleTopicChange(selectedTopic) {
